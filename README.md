@@ -3,12 +3,13 @@ This is a Web Application that provides an information about Ukraine and its cul
 
 ## Build with
 <img align="right" width="200" height="100" src="https://miro.medium.com/max/2800/0*QrGJeWvArCjF2BuV.jpg">
--[MongoDB](https://www.mongodb.com/)
--[Express](https://expressjs.com/)
--[React](https://reactjs.org/)
--[Node.js](https://nodejs.org/en/)
--[Webpack](https://webpack.js.org/)
--[Bulma](https://bulma.io/)
+
+- [MongoDB](https://www.mongodb.com/)
+- [Express](https://expressjs.com/)
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Webpack](https://webpack.js.org/)
+- [Bulma](https://bulma.io/)
 
 ## Running example
 Please , press [here](https://polar-reaches-35727.herokuapp.com/#/) to see running example
