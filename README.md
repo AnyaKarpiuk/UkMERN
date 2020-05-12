@@ -3,12 +3,12 @@ This is a Web Application that provides an information about Ukraine and its cul
 
 ## Build with
 <img align="right" width="200" height="100" src="https://miro.medium.com/max/2800/0*QrGJeWvArCjF2BuV.jpg">
-[MongoDB](https://www.mongodb.com/)
-[Express] (https://expressjs.com/)
-[React](https://reactjs.org/)
-[Node.js](https://nodejs.org/en/)
-[Webpack](https://webpack.js.org/)
-[Bulma](https://bulma.io/)
+-[MongoDB](https://www.mongodb.com/)
+-[Express](https://expressjs.com/)
+-[React](https://reactjs.org/)
+-[Node.js](https://nodejs.org/en/)
+-[Webpack](https://webpack.js.org/)
+-[Bulma](https://bulma.io/)
 
 ## Running example
 Please , press [here](https://polar-reaches-35727.herokuapp.com/#/) to see running example
@@ -16,8 +16,7 @@ Please , press [here](https://polar-reaches-35727.herokuapp.com/#/) to see runni
 ## To run this application on GitPod follow next steps 
 
 #### 1. Open GitPod workspace for your repository
-Enter https://gitpod.io/#yourRepositoryLink in a browser
-It can take few minutes to load
+Enter https://gitpod.io/#yourRepositoryLink in a browser. It can take few minutes to load
 
 #### 2. Clone current repository
 ```linux
