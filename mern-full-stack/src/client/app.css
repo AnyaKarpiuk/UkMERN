@@ -1,3 +1,124 @@
-#form{
-    width: 500px;
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital@1&family=Fondamento&display=swap');
+
+#form {
+    width: 600px;
+}
+
+.main {
+  margin-left: 195px; 
+  font-size: 28px; 
+  padding: 0px 10px;
+}
+
+#title{
+    color: hsl(48, 100%, 67%);
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Merienda One', cursive;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+#title2 {
+    color: hsl(48, 100%, 67%);
+    font-family: 'Merienda One', cursive;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 20px;
+    background-color: #081017;
+}
+
+.pictureTitle{
+    color: hsl(48, 100%, 67%);
+    font-size: 70px;
+    padding-bottom: 300px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Merienda One', cursive;
+}
+
+.pictureSubtitle {
+    color: #D3D0D9;
+    font-size: 40px;
+    border: 3px solid #D3D0D9;
+    display: inline;
+    font-family: 'Fondamento', cursive;
+}
+
+.menu {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #081017;
+  padding-top: 20px;
+  padding: 10px;
+  font-family: 'Merienda One', cursive;
+}
+
+.card-footer{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Merienda One', cursive;
+}
+
+#name {
+    font-family: 'Merienda One', cursive;
+    padding: 15px;
+}
+
+.label, .button, .title {
+    font-family:'Merienda One', cursive;; 
+}
+
+#buttons {
+    padding-top: 150px;
+}
+
+/* Ipad screen size adjustments */
+@media only screen and (max-width: 800px) {
+
+    .pictureTitle {
+        font-size: 50px;
+        padding-bottom: 100px;
+    }
+
+    .pictureSubtitle {
+        font-size: 30px;
+    }  
+
+    .menu {
+        width: 150px;
+    } 
+
+    .main {
+        margin-left: 150px; 
+        }
+
+}
+
+/* mobile screen size adjustments */
+@media only screen and (max-width: 600px) {
+
+    .pictureTitle {
+        font-size: 40px;
+        padding-bottom: 10px;
+    }
+
+    .pictureSubtitle {
+        font-size: 20px;
+    }  
+
+    .menu {
+        width: 150px;
+    } 
+
+    .main {
+        margin-left: 150px; 
+        }
+
 }

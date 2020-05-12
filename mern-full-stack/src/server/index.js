@@ -4,35 +4,29 @@ const ObjectID = require('mongodb').ObjectID;
 const bodyParser = require('body-parser');
 
 const server = express();
-// the value for dbname should match your database name
-const dbname = 'usersdb';
 
-// serve files from the dist directory
+const dbname = 'myDatabase'; 
+
 server.use(express.static('dist'));
 
-// the URL to the DB will be loaded from an env variable or using the MongoDB Clour
-const dbroute = process.env.MONGODB_URL || `mongodb+srv://<USERNAME>:<PASSWORD>@users-bm6td.mongodb.net/test?retryWrites=true&w=majority`;
+//the URL from the database
+const dbroute = process.env.MONGODB_URL || `mongodb+srv://Anna:Blah2020!@cluster0-o8zv3.mongodb.net/test`;
 
 let db;
 
-// connect to the DB and then start the expres server
+//connect to the database
 MongoClient.connect(dbroute, (err, client) => {
   if (err) throw err;
-
   db = client.db(dbname);
-  // start the express web server listening
   server.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
 });
 
-// bodyParser, parses the request body to be a readable json format
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-// DEFINE ENDPOINTS
-
-// retrieve all user objects from DB
-server.get('/api/users', (req, res) => {
-  db.collection('users').find().toArray((err, result) => {
+//retrieve all places objects from the database
+server.get('/api/places', (req, res) => {
+  db.collection('places').find().toArray((err, result) => {
     if (err) throw err;
 
     console.log(result);
@@ -40,9 +34,9 @@ server.get('/api/users', (req, res) => {
   });
 });
 
-// retrieve user with specific ID from DB
-server.get('/api/users/:id', (req, res) => {
-  db.collection('users').findOne({_id: new ObjectID(req.params.id) }, (err, result) => {
+//retrieve all food objects from the database
+server.get('/api/food', (req, res) => {
+  db.collection('food').find().toArray((err, result) => {
     if (err) throw err;
 
     console.log(result);
@@ -50,9 +44,29 @@ server.get('/api/users/:id', (req, res) => {
   });
 });
 
-// delete user with specific ID from DB
-server.delete('/api/users', (req, res) => {
-  db.collection('users').deleteOne( {_id: new ObjectID(req.body.id) }, err => {
+//retrieve places with a specific id from the database
+server.get('/api/places/:id', (req, res) => {
+  db.collection('places').findOne({_id: new ObjectID(req.params.id) }, (err, result) => {
+    if (err) throw err;
+
+    console.log(result);
+    res.send(result);
+  });
+});
+
+//retrieve food with a specific id from the database
+server.get('/api/food/:id', (req, res) => {
+  db.collection('food').findOne({_id: new ObjectID(req.params.id) }, (err, result) => {
+    if (err) throw err;
+
+    console.log(result);
+    res.send(result);
+  });
+});
+
+//delete place with a specific id from the database
+server.delete('/api/places', (req, res) => {
+  db.collection('places').deleteOne( {_id: new ObjectID(req.body.id) }, err => {
     if (err) return res.send(err);
 
     console.log('deleted from database');
@@ -60,9 +74,19 @@ server.delete('/api/users', (req, res) => {
   });
 });
 
-// create new user based on info supplied in request body
-server.post('/api/users', (req, res) => {
-  db.collection('users').insertOne(req.body, (err, result) => {
+//delete food with a specific if from the database
+server.delete('/api/food', (req, res) => {
+  db.collection('food').deleteOne( {_id: new ObjectID(req.body.id) }, err => {
+    if (err) return res.send(err);
+
+    console.log('deleted from database');
+    return res.send({ success: true });
+  });
+});
+
+//create a new place
+server.post('/api/places', (req, res) => {
+  db.collection('places').insertOne(req.body, (err, result) => {
     if (err) throw err;
 
     console.log('created in database');
@@ -70,14 +94,39 @@ server.post('/api/users', (req, res) => {
   });
 });
 
-// update user based on info supplied in request body
-server.put('/api/users', (req, res) => {
-  // get the ID of the user to be updated
+//create a new food
+server.post('/api/food', (req, res) => {
+  db.collection('food').insertOne(req.body, (err, result) => {
+    if (err) throw err;
+
+    console.log('created in database');
+    res.redirect('/');
+  });
+});
+
+//update a place
+server.put('/api/places', (req, res) => {
+  
   const id  = req.body._id;
-  // remove the ID so as not to overwrite it when updating
+  
   delete req.body._id;
-  // find a user matching this ID and update their details
-  db.collection('users').updateOne( {_id: new ObjectID(id) }, {$set: req.body}, (err, result) => {
+  
+  db.collection('places').updateOne( {_id: new ObjectID(id) }, {$set: req.body}, (err, result) => {
+    if (err) throw err;
+
+    console.log('updated in database');
+    return res.send({ success: true });
+  });
+});
+
+//update a food
+server.put('/api/food', (req, res) => {
+  
+  const id  = req.body._id;
+  
+  delete req.body._id;
+  
+  db.collection('food').updateOne( {_id: new ObjectID(id) }, {$set: req.body}, (err, result) => {
     if (err) throw err;
 
     console.log('updated in database');

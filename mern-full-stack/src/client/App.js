@@ -1,21 +1,23 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-//import required components
-import CreateUser from './CreateUser';
-import EditUser from './EditUser';
-import UserList from './UserList';
+import CreatePlace from './CreatePlace';
+import EditPlace from './EditPlace';
+import PlaceList from './PlaceList';
+// import FoodList from'./FoodList';
+// import CreateFood from './CreateFood';
+// import EditFood from './EditFood';
 
 // this is the "main" component which sets up the React Router and respective routes
 const App = () => {
   return(
     <HashRouter>
       <div>
-        {/*SERVERSIDE: Link the routes to components*/}
-        <Route exact path="/" component={UserList}/>
-        {/*pass the id through the EditUser component*/}
-        <Route path="/edit-user/:id" component={EditUser}/>
-        {/*set the path to create a new user to CreateUser component*/}
-        <Route path="/create-user" component={CreateUser}/>
+        <Route exact path="/" component={PlaceList}/>
+        <Route path="/edit-place/:id" component={EditPlace}/>
+        <Route path="/create-place" component={CreatePlace}/>
+        {/* <Route path="/food-list" component={FoodList}/>
+        <Route path='/create-food' component={CreateFood}/>
+        <Route path='/edit-food/:id' component={EditFood}/> */}
       </div>
     </HashRouter>
   );
