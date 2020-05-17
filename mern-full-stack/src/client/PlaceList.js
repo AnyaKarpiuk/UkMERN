@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Place from './Place';
 import EditPlace from './EditPlace';
-import axios from 'axios';  
+import Secret from './Secret';
+import Login from './Login';
+import Register from './Register';
+import UserList from './UserList';
+import axios from 'axios';
 import './app.css';
 import 'bulma/css/bulma.css';
 
@@ -21,10 +25,9 @@ class PlaceList extends Component {
     }
 
     updatePlaces() {
-        
+
         axios.get('api/places')
             .then(response => {
-                //store the response in the state
                 this.setState({ places: response.data });
             })
 
@@ -34,7 +37,7 @@ class PlaceList extends Component {
     }
 
     handleDelete(placeId) {
-       
+
         axios
             .delete('api/places', {
                 data: {
@@ -42,7 +45,7 @@ class PlaceList extends Component {
                 }
             })
             .then(response => {
-                
+
                 this.updatePlaces();
             })
             .catch(error => {
@@ -53,7 +56,7 @@ class PlaceList extends Component {
     render() {
 
         const placesList = this.state.places.map(p => (
-            
+
             <Place
                 key={p._id}
                 id={p._id}
@@ -67,32 +70,10 @@ class PlaceList extends Component {
             />
         ));
 
-        //display the list of users
+        //display the list of places
         return (
 
             <div class="container">
-
-                {/* Side Menu */}
-                <aside id="menu" class="menu">
-                    <h1 id="title"> Menu </h1>
-                    <ul id="menu-list" class="menu-list is-size-4 has-text-centered ">
-                        {/* Menu's options */}
-                        <Link to={'/'} className="navbar-item">
-                            <li><a>Travel</a></li>
-                        </Link>
-                        <Link to={'/food-list'} className="navbar-item">
-                            <li><a>Eat</a></li>
-                        </Link>
-                        <div id="buttons">
-                            <Link to={'/create-place'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Place</button>
-                            </Link>
-                            <Link to={'/create-food'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Food</button>
-                            </Link>
-                        </div>
-                    </ul>
-                </aside>
 
                 {/* display main page */}
                 <figure id="main" class="image is-3by2">
@@ -107,7 +88,8 @@ class PlaceList extends Component {
 
                 {/* display the list of places */}
                 <div>
-                    <h1 id="title2" class="title has-text-centered is-size-1">Travel</h1>   
+                    <h1 id="title2" class="title has-text-centered is-size-1">Travel</h1>
+
                     <div className="columns is-multiline">
                         {placesList}
                     </div>
@@ -121,9 +103,6 @@ class PlaceList extends Component {
                 </Link>
 
             </div>
-
-
-
         );
     }
 }

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 class CreateFood extends Component {
     constructor(props) {
         super(props);
-        // the form fields are stored in a state
         this.state = {
             name: "",
             picture: "",
@@ -18,9 +17,8 @@ class CreateFood extends Component {
         this.updateIngredientsArray = this.updateIngredientsArray.bind(this);
     }
 
-    //once the input boxes are changed, update the state to match the value
     handleChange(event) {
-        //name of the input boxes must match the property names in the state
+      
         const name = event.target.name;
         const value = event.target.value;
 
@@ -32,7 +30,6 @@ class CreateFood extends Component {
         const { ingredients } = this.state;
         ingredients.splice(index, 1, e.target.value)
         this.setState({ ingredients: [...ingredients] }, () => {
-
             console.log(this.state.ingredients)
         });
     }
@@ -49,31 +46,9 @@ class CreateFood extends Component {
 
     render() {
 
-        // display create place input form
+        // display create food input form
         return (
             <div class="container" className="is-fluid">
-
-                {/* Side Menu */}
-                <aside id="menu" class="menu">
-                    <h1 id="title"> Menu </h1>
-                    <ul id="menu-list" class="menu-list is-size-4 has-text-centered ">
-                        {/* Menu's options */}
-                        <Link to={'/'} className="navbar-item">
-                            <li><a>Travel</a></li>
-                        </Link>
-                        <Link to={'/food-list'} className="navbar-item">
-                            <li><a>Eat</a></li>
-                        </Link>
-                        <div id="buttons">
-                            <Link to={'/create-place'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Place</button>
-                            </Link>
-                            <Link to={'/create-food'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Food</button>
-                            </Link>
-                        </div>
-                    </ul>
-                </aside>
 
                 <form onSubmit={this.handleSubmit}>
                     <div className="container">

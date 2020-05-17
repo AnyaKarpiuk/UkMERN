@@ -34,9 +34,8 @@ class EditFood extends Component {
             });
     }
 
-    //once the input boxes are changed, update the state to match the value
     handleChange(event) {
-        //name of the input boxes must match the property names in the state
+
         const name = event.target.name;
         const value = event.target.value;
 
@@ -53,10 +52,9 @@ class EditFood extends Component {
     }
 
     handleSubmit(event) {
-        //preventDefault() is called on the event when it occurs to prevent a browser reload/refresh
+
         event.preventDefault();
 
-        // use axios to send a PUT request to the server which includes the updated state information
         axios.put('/api/food', this.state)
             //on success go to home
             .then(res => this.props.history.push('/'))
@@ -68,29 +66,7 @@ class EditFood extends Component {
     render() {
         return (
             <div className="is-fluid">
-
-                {/* Side Menu */}
-                <aside id="menu" class="menu">
-                    <h1 id="title"> Menu </h1>
-                    <ul id="menu-list" class="menu-list is-size-4 has-text-centered ">
-                        {/* Menu's options */}
-                        <Link to={'/'} className="navbar-item">
-                            <li><a>Travel</a></li>
-                        </Link>
-                        <Link to={'/food-list'} className="navbar-item">
-                            <li><a>Eat</a></li>
-                        </Link>
-                        <div id="buttons">
-                            <Link to={'/create-place'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Place</button>
-                            </Link>
-                            <Link to={'/create-food'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Food</button>
-                            </Link>
-                        </div>
-                    </ul>
-                </aside>
-
+                {/* display edit food form */}
                 <form onSubmit={this.handleSubmit}>
                     <div className="container">
                         {/*form*/}

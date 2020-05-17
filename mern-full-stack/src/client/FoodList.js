@@ -23,7 +23,6 @@ class FoodList extends Component {
 
         axios.get('api/food')
             .then(response => {
-                //store the response in the state
                 this.setState({ food: response.data });
             })
 
@@ -68,27 +67,6 @@ class FoodList extends Component {
         return (
 
             <div class="container">
-                {/* Side Menu */}
-                <aside id="menu" class="menu">
-                    <h1 id="title"> Menu </h1>
-                    <ul id="menu-list" class="menu-list is-size-4 has-text-centered ">
-                        {/* Menu's options */}
-                        <Link to={'/'} className="navbar-item">
-                            <li><a>Travel</a></li>
-                        </Link>
-                        <Link to={'/food-list'} className="navbar-item">
-                            <li><a>Eat</a></li>
-                        </Link>
-                        <div id="buttons">
-                            <Link to={'/create-place'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Place</button>
-                            </Link>
-                            <Link to={'/create-food'} className="navbar-item">
-                                <button className="button is-warning" type="button">Add Food</button>
-                            </Link>
-                        </div>
-                    </ul>
-                </aside>
 
                 {/* display main page */}
                 <figure id="main" class="image is-3by2">
@@ -109,6 +87,7 @@ class FoodList extends Component {
                     </div>
                 </div>
 
+                {/* Create Food */}
                 <Link to={'/create-food'} className="navbar-item navbar-end">
                     <button className="button is-warning" type="button">Add Food</button>
                 </Link>
