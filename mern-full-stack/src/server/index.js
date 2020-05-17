@@ -19,6 +19,7 @@ server.use(express.static('dist'));
 
 //the URL from the database
 const dbroute = process.env.MONGODB_URL || `mongodb+srv://Anna:Blah2020!@cluster0-o8zv3.mongodb.net/test`;
+const userDB = process.env.MONGODB_URL || `mongodb+srv://Anna:Blah2020!@cluster0-o8zv3.mongodb.net/usersList?retryWrites=true&w=majority`;
 
 let db;
 
@@ -35,7 +36,7 @@ server.use(cookieParser());
 mongoose.set('useCreateIndex', true);
 
 mongoose.connect(
-    process.env.MONGOLAB_URI,
+    userDB,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -44,7 +45,7 @@ mongoose.connect(
         if (err) {
             throw err;
         } else {
-            console.log(`Successfully connected to ${process.env.MONGOLAB_URI}`);
+            console.log(`Successfully connected to ${userDB}`);
         }
     }
 );
