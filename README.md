@@ -12,7 +12,7 @@ This is a Web Application that provides an information about Ukraine and its cul
 - [Bulma](https://bulma.io/)
 
 ## Running example
-Please , press [here](https://polar-reaches-35727.herokuapp.com/#/) to see running example
+Please , press [here](https://murmuring-taiga-66641.herokuapp.com/) to see running example
 
 ## To run this application on GitPod follow next steps 
 
